@@ -23,9 +23,6 @@ using System.IO; //Utilizado para I/O de arquivos etc.
 
 
 
-
-
-
 namespace FaceID
 {
     /// <summary>
@@ -35,9 +32,6 @@ namespace FaceID
     {
         Server servidor = new Server();
         public int flag2 = 1;     
-
-
-
 
         private Thread processingThread;
         //Cria uma variável do tipo 'PXCMSenseManager' para interface com algoritmos pré-definidos ex: Reconhecimento facial         
@@ -91,7 +85,7 @@ namespace FaceID
             doUnregister = false;
 
             // Start SenseManage and configure the face module
-            ConfigureRealSense();
+            //ConfigureRealSense();
 
             // Start the worker thread
             processingThread = new Thread(new ThreadStart(ProcessingThread)); //Cria uma thread para executar os processos de reconhecimeto facial
@@ -209,11 +203,7 @@ namespace FaceID
 
         //---------------------------------------------------------SaveDatabaseToFile-----------------------------------------------------------------------------------------------
 
-
-
-
-
-        private void SaveDatabaseToFile()
+        public string SaveDatabaseToFile()
         {
             // Allocate the buffer to save the database
             PXCMFaceData.RecognitionModuleData recognitionModuleData = faceData.QueryRecognitionModule();
@@ -226,16 +216,14 @@ namespace FaceID
             // Save the buffer to a file
             // (NOTE: production software should use file encryption for privacy protection)
             File.WriteAllBytes(DatabaseFilename, buffer);
+
             dbState = "Saved";
+
+
+            return dbState;
         }
 
-
-
-
         //-------------------------------------------------DeleteDatabaseFile-------------------------------------------------------------------------------------------------------
-
-
-
 
         private void DeleteDatabaseFile()
         {
@@ -250,13 +238,7 @@ namespace FaceID
             }
         }
 
-
-
-
         //---------------------------------------------------------ProcessingThread-----------------------------------------------------------------------------------------------
-
-
-
 
 
         private void ProcessingThread()
@@ -405,8 +387,6 @@ namespace FaceID
                     imgColorStream.Source = ConvertBitmap.BitmapToBitmapSource(bitmap);
                     //Byte[] bitmapByte = ImageToByte(bitmap);
                     //servidor.sendFile(bitmapByte);
-
-
                 }
 
                 // Update UI elements

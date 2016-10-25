@@ -12,6 +12,9 @@ namespace FaceID
     class Actions
     {
         static Codigo codigo;
+        public static MainWindow mw = new MainWindow();
+        private static PXCMFaceData.RecognitionData recognitionData;
+        
 
         public static void actions(string cod)
         {
@@ -53,10 +56,12 @@ namespace FaceID
 
         static void registerUser()
         {
-            Console.WriteLine("registerUser true");          
+            
+            var savedFile = mw.SaveDatabaseToFile();
+            var userId = Convert.ToString(recognitionData.QueryUserID());
 
             Create create = new Create();
-            //create.Adiciona(/*json.nome, json.tel, json.age*/);
+            create.Adiciona(codigo.nome, codigo.tel, codigo.age, codigo.email, userId);
         }
 
         static void unregisterUser()
@@ -74,6 +79,8 @@ class Codigo
     public string cod { get; set; }
 
     public bool rect { get; set; }
+
+    public string ID_Cam { get; set; }
 
     public string nome { get; set; }
     public string tel { get; set; }

@@ -9,18 +9,20 @@ namespace FaceID.Database
 {
     class Update
     {
-        string nome = "Json.Nome";
+       /* string nome = "Json.Nome";
         string fone = "Json.Fone";
         string nasc = "Json.Date";
-        string mail = "Json.Mail";
-
-        static string strCn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DBAgenda.mdf;Integrated Security = True";
+        string mail = "Json.Mail";*/
+        //VS2012
+        static string strCn = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Mostratec\Documents\SH2\APIREALSENSE\FaceID\Database\SHDB.mdf;Integrated Security=True";
+        //VS2015
+        //static string strCn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Mostratec\Documents\SH2\APIREALSENSE\FaceID\Database\SHDB.mdf;Integrated Security=True";
         SqlConnection conexao = new SqlConnection(strCn);
 
-        private void Altera()
+        private void Altera(string nome, string fone, string nasc, string email)
         {
 
-            string altera = "update tbcontatos set Nome= '" + nome + "', Fone= '" + fone + "', Email= '" + mail + "where nome=" + nome;
+            string altera = "update tbusers set Nome= '" + nome + "', Fone= '" + fone + "', Email= '" + email + "where nome=" + nome;
 
             SqlCommand cmd = new SqlCommand(altera, conexao);
             try

@@ -9,14 +9,14 @@ namespace FaceID.Database
 {
     class Read
     {
-        string nome = "Json.Nome";
+        /*string nome = "Json.Nome";
         string fone = "Json.Fone";
-        string nasc = "Json.Date";
+        string nasc = "Json.Date";*/
 
         //VS2012
-        static string strCn = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Mostratec\Documents\SH2\APIREALSENSE\FaceID\SHDB.mdf;Integrated Security=True";
+        static string strCn = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Mostratec\Documents\SH2\APIREALSENSE\FaceID\Database\SHDB.mdf;Integrated Security=True";
         //vs2015
-        //static string strCn = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\SHDB.mdf;Integrated Security = True";
+        //static string strCn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Mostratec\Documents\SH2\APIREALSENSE\FaceID\Database\SHDB.mdf;Integrated Security=True";
         SqlConnection conexao = new SqlConnection(strCn);
         SqlDataReader DR;
 
